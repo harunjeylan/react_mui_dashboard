@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 // import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";

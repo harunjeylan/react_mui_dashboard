@@ -11,10 +11,10 @@ import Invoices from "./pages/invoices";
 import Contacts from "./pages/contacts";
 import Form from "./pages/form";
 import Calendar from "./pages/calendar";
-// import Bar from "./pages/bar";
+import Bar from "./pages/bar";
 // import Line from "./pages/line";
-// import Pie from "./pages/pie";
-// import FAQ from "./pages/faq";
+import Pie from "./pages/pie";
+import FAQ from "./pages/faq";
 // import Geography from "./pages/geography";
 
 const App = () => {
@@ -33,10 +33,10 @@ const App = () => {
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
-              {/* <Route path="/bar" element={<Bar />} /> */}
-              {/* <Route path="/pie" element={<Pie />} /> */}
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
               {/* <Route path="/line" element={<Line />} /> */}
-              {/* <Route path="/faq" element={<FAQ />} /> */}
+              <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calendar />} />
               {/* <Route path="/geography" element={<Geography />} /> */}
             </Routes>

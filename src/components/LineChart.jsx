@@ -45,7 +45,7 @@ const LineChart = ({ isDashboard = false }) => {
       }}
       curve="catmullRom"
       data={mockLineData}
-      colors={isDashboard ? { datum: "colors" } : { scheme: "nivo" }}
+      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
@@ -78,7 +78,7 @@ const LineChart = ({ isDashboard = false }) => {
         legendPosition: "middle",
       }}
       enableGridX={false}
-      enableGridY={false}
+      enableGridY={!isDashboard}
       pointSize={10}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}

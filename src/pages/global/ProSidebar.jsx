@@ -45,27 +45,27 @@ const ProSidebar = () => {
       height="100%"
       sx={{
         "& .sidebar": {
-          border: "none"
+          border: "none",
         },
         "& .menu-icon": {
-          backgroundColor: "transparent !important"
+          backgroundColor: "transparent !important",
         },
         "& .menu-item": {
           // padding: "5px 35px 5px 20px !important",
-          backgroundColor: "transparent !important"
+          backgroundColor: "transparent !important",
         },
         "& .menu-anchor": {
           color: "inherit !important",
-          backgroundColor: "transparent !important"
+          backgroundColor: "transparent !important",
         },
         "& .menu-item:hover": {
           color: `${colors.blueAccent[500]} !important`,
-          backgroundColor: "transparent !important"
+          backgroundColor: "transparent !important",
         },
         "& .menu-item.active": {
           color: `${colors.greenAccent[500]} !important`,
-          backgroundColor: "transparent !important"
-        }
+          backgroundColor: "transparent !important",
+        },
       }}
     >
       <Sidebar collapsed={isCollapsed} backgroundColor={colors.primary[400]}>
@@ -75,7 +75,7 @@ const ProSidebar = () => {
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
-              color: colors.grey[100]
+              color: colors.grey[100],
             }}
           >
             {!isCollapsed && (
@@ -101,6 +101,7 @@ const ProSidebar = () => {
                   alt="profile user"
                   width="100px"
                   height="100px"
+                  backgroundColor={colors.greenAccent[700]}
                   src={"../../assets/user.png"}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />

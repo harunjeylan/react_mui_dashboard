@@ -69,7 +69,7 @@ const ProSidebar = () => {
       }}
     >
       <Sidebar collapsed={isCollapsed} backgroundColor={colors.primary[400]}>
-        <Menu iconShape="square">
+        <Menu iconshape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
@@ -96,12 +96,18 @@ const ProSidebar = () => {
           </MenuItem>
           {!isCollapsed && (
             <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
+              <Box display="flex" justifyContent="center" alignItems="center"
+               sx={{
+                "& .avater-image": {
+                  backgroundColor: colors.primary[500]
+                },
+              }}>
                 <img
+                 className="avater-image"
                   alt="profile user"
                   width="100px"
                   height="100px"
-                  backgroundColor={colors.greenAccent[700]}
+                  
                   src={"../../assets/user.png"}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />

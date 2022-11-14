@@ -8,7 +8,7 @@ const Bar = () => {
     // const theme = useTheme()
     // const colors = tokens(theme.palette.mode)
     return (
-        <Box m="20px" height="75vh">
+        <Box m="20px" height="75vh" p="2px">
             <Header title="BAR CHART" subtitle="simple bar chart" />
             <PieChart />
         </Box>

@@ -1,6 +1,6 @@
 // docs https://github.com/azouaoui-med/react-pro-sidebar
 import { useState } from "react";
-import { Menu, SubMenu, Sidebar, MenuItem } from "react-pro-sidebar";
+import { Menu, Sidebar, MenuItem } from "react-pro-sidebar";
 import { useProSidebar } from "react-pro-sidebar";
 
 import { useSidebarContext } from "./sidebarContext";
@@ -46,8 +46,7 @@ const MyProSidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [selected, setSelected] = useState("Dashboard");
   const { sidebarRTL, setSidebarRTL, sidebarImage } = useSidebarContext();
-  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
-    useProSidebar();
+  const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
   return (
     <Box
       sx={{

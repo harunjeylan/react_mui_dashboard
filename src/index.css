@@ -5,15 +5,7 @@ body,
 #root,
 .app,
 .content {
-  height: 100%;
-  width: 100%;
   font-family: "Source Sance Pro", sans-serif;
-}
-
-
-.app {
-  display: flex;
-  position: relative;
 }
 
 ::-webkit-scrollbar {

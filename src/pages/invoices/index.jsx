@@ -16,7 +16,7 @@ const Invoices = () => {
       field: "name",
       headerName: "Name",
       flex: 1,
-      cellClassName: "name-column--cell"
+      cellClassName: "name-column--cell",
     },
     { field: "email", headerName: "Email", flex: 1 },
     { field: "phone", headerName: "Phone Number", flex: 1 },
@@ -27,9 +27,9 @@ const Invoices = () => {
       flex: 1,
       renderCell: ({ row: { cost } }) => {
         return <Typography color={colors.greenAccent[500]}>${cost}</Typography>;
-      }
+      },
     },
-    { field: "date", headerName: "Date", flex: 1 }
+    { field: "date", headerName: "Date", flex: 1 },
   ];
   return (
     <Box m="20px">
@@ -38,34 +38,34 @@ const Invoices = () => {
       </Box>
       <Box
         m="8px 0 0 0"
-        height="65vh"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
-            border: "none"
+            border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none"
+            borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[300]
+            color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],
-            borderBottom: "none"
+            borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400]
+            backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700]
+            backgroundColor: colors.blueAccent[700],
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`
+            color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiChackbox-root": {
-            color: `${colors.greenAccent[200]} !important`
-          }
+            color: `${colors.greenAccent[200]} !important`,
+          },
         }}
       >
         <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />

@@ -16,20 +16,20 @@ const Contacts = () => {
       field: "name",
       headerName: "Name",
       flex: 1,
-      cellClassName: "name-column--cell"
+      cellClassName: "name-column--cell",
     },
     {
       field: "age",
       headerName: "Age",
       type: "number",
       headerAlign: "left",
-      align: "left"
+      align: "left",
     },
     { field: "phone", headerName: "Phone Number", flex: 1 },
     { field: "email", headerName: "Email", flex: 1 },
     { field: "address", headerName: "Address", flex: 1 },
     { field: "city", headerName: "City", flex: 1 },
-    { field: "zipCode", headerName: "Zip Code", flex: 1 }
+    { field: "zipCode", headerName: "Zip Code", flex: 1 },
   ];
   return (
     <Box m="20px">
@@ -37,35 +37,35 @@ const Contacts = () => {
         <Header title="CONTACTS" subtitle="welcome to you Contacts" />
       </Box>
       <Box
-       m="8px 0 0 0"
-       height="65vh"
+        m="8px 0 0 0"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
-            border: "none"
+            border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none"
+            borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[300]
+            color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],
-            borderBottom: "none"
+            borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400]
+            backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700]
+            backgroundColor: colors.blueAccent[700],
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`
+            color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.grey[100]} !important`
-          }
+            color: `${colors.grey[100]} !important`,
+          },
         }}
       >
         <DataGrid

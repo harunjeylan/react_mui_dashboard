@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+// docs https://github.com/azouaoui-med/react-pro-sidebar
+import { useState } from "react";
+import { Menu, SubMenu, Sidebar, MenuItem } from "react-pro-sidebar";
+import { useProSidebar } from "react-pro-sidebar";
+
+import { useSidebarContext } from "./sidebarContext";
+
 import { Link } from "react-router-dom";
-import { tokens } from "../../theme";
+import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -12,10 +17,13 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-
+import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
+import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -33,16 +41,22 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const ProSidebar = () => {
+const MyProSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const { sidebarRTL, setSidebarRTL, sidebarImage } = useSidebarContext();
+  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
+    useProSidebar();
   return (
     <Box
-      display="flex"
-      height="100%"
       sx={{
+        position: "sticky",
+        display: "flex",
+        height: "100vh",
+        top: 0,
+        bottom: 0,
+        zIndex: 10000,
         "& .sidebar": {
           border: "none",
         },
@@ -67,17 +81,33 @@ const ProSidebar = () => {
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed} backgroundColor={colors.primary[400]}>
+      <Sidebar
+        breakPoint="md"
+        rtl={sidebarRTL}
+        backgroundColor={colors.primary[400]}
+        image={sidebarImage}
+      >
         <Menu iconshape="square">
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+            icon={
+              collapsed ? (
+                <MenuOutlinedIcon onClick={() => collapseSidebar()} />
+              ) : sidebarRTL ? (
+                <SwitchLeftOutlinedIcon
+                  onClick={() => setSidebarRTL(!sidebarRTL)}
+                />
+              ) : (
+                <SwitchRightOutlinedIcon
+                  onClick={() => setSidebarRTL(!sidebarRTL)}
+                />
+              )
+            }
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
             }}
           >
-            {!isCollapsed && (
+            {!collapsed && (
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -87,26 +117,33 @@ const ProSidebar = () => {
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMINIS
                 </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
+                <IconButton
+                  onClick={
+                    broken ? () => toggleSidebar() : () => collapseSidebar()
+                  }
+                >
+                  <CloseOutlinedIcon />
                 </IconButton>
               </Box>
             )}
           </MenuItem>
-          {!isCollapsed && (
+          {!collapsed && (
             <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center"
-               sx={{
-                "& .avater-image": {
-                  backgroundColor: colors.primary[500]
-                },
-              }}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  "& .avater-image": {
+                    backgroundColor: colors.primary[500],
+                  },
+                }}
+              >
                 <img
-                 className="avater-image"
+                  className="avater-image"
                   alt="profile user"
                   width="100px"
                   height="100px"
-                  
                   src={"../../assets/user.png"}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
@@ -120,11 +157,10 @@ const ProSidebar = () => {
                 >
                   Harun Jeylan
                 </Typography>
-                <Typography></Typography>
               </Box>
             </Box>
           )}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box paddingLeft={collapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
               to="/"
@@ -136,7 +172,7 @@ const ProSidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Data
             </Typography>
@@ -165,7 +201,7 @@ const ProSidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Pages
             </Typography>
@@ -194,7 +230,7 @@ const ProSidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 20px 5px 20px" }}
             >
               Charts
             </Typography>
@@ -233,4 +269,4 @@ const ProSidebar = () => {
   );
 };
 
-export default ProSidebar;
+export default MyProSidebar;

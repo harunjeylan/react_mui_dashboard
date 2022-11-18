@@ -15,21 +15,21 @@ const Invoices = () => {
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
+      width: 200,
       cellClassName: "name-column--cell",
     },
-    { field: "email", headerName: "Email", flex: 1 },
-    { field: "phone", headerName: "Phone Number", flex: 1 },
+    { field: "email", headerName: "Email", width: 200 },
+    { field: "phone", headerName: "Phone Number", width: 100 },
 
     {
       field: "cost",
       headerName: "Cost",
-      flex: 1,
+      width: 100,
       renderCell: ({ row: { cost } }) => {
         return <Typography color={colors.greenAccent[500]}>${cost}</Typography>;
       },
     },
-    { field: "date", headerName: "Date", flex: 1 },
+    { field: "date", headerName: "Date", width: 100 },
   ];
   return (
     <Box m="20px">

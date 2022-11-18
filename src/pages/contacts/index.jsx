@@ -10,13 +10,13 @@ const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "Id" },
-    { field: "registrarId", headerName: "Registrar Id" },
+    { field: "id", headerName: "Id", width: 100 },
+    { field: "registrarId", headerName: "Registrar Id", width: 100 },
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
       cellClassName: "name-column--cell",
+      width: 200,
     },
     {
       field: "age",
@@ -24,12 +24,13 @@ const Contacts = () => {
       type: "number",
       headerAlign: "left",
       align: "left",
+      width: 100,
     },
-    { field: "phone", headerName: "Phone Number", flex: 1 },
-    { field: "email", headerName: "Email", flex: 1 },
-    { field: "address", headerName: "Address", flex: 1 },
-    { field: "city", headerName: "City", flex: 1 },
-    { field: "zipCode", headerName: "Zip Code", flex: 1 },
+    { field: "phone", headerName: "Phone Number", width: 100 },
+    { field: "email", headerName: "Email", width: 200 },
+    { field: "address", headerName: "Address", width: 250 },
+    { field: "city", headerName: "City", width: 100 },
+    { field: "zipCode", headerName: "Zip Code", width: 100 },
   ];
   return (
     <Box m="20px">
@@ -38,6 +39,7 @@ const Contacts = () => {
       </Box>
       <Box
         m="8px 0 0 0"
+        width="100%"
         height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
